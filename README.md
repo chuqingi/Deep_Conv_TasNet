@@ -1,5 +1,5 @@
-# Deep_Conv_TasNet : End-to-end time-domain speech separation model
-A PyTorch implementation of Deep_Conv_TasNet
+# DeepConvTasNet : end-to-end time-domain speech separation model
+A PyTorch implementation of DeepConvTasNet
 
 ## Table of contents
 1. [Requirement](#re)
