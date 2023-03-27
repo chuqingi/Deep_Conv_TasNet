@@ -49,8 +49,8 @@ class CumulativeLayerNorm(nn.Module):
         self.eps = eps
         self.elementwise_affine = elementwise_affine
         if self.elementwise_affine:
-            self.weight = nn.Parameter(torch.ones(self.dim, 1))
-            self.bias = nn.Parameter(torch.zeros(self.dim, 1))
+            self.weight = nn.Parameter(torch.ones(1, self.dim, 1))
+            self.bias = nn.Parameter(torch.zeros(1, self.dim, 1))
         else:
             self.register_parameter('weight', None)
             self.register_parameter('bias', None)
