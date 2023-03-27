@@ -21,8 +21,8 @@ class GlobalLayerNorm(nn.Module):
         self.eps = eps
         self.elementwise_affine = elementwise_affine
         if self.elementwise_affine:
-            self.weight = nn.Parameter(torch.ones(self.dim, 1))
-            self.bias = nn.Parameter(torch.zeros(self.dim, 1))
+            self.weight = nn.Parameter(torch.ones(1, self.dim, 1))
+            self.bias = nn.Parameter(torch.zeros(1, self.dim, 1))
         else:
             self.register_parameter('weight', None)
             self.register_parameter('bias', None)
@@ -205,7 +205,7 @@ class DeepConvTasNet(nn.Module):
         self.encoder = Encoder(1, N, L, L // 2)
         # Layer Normalization of Separation
         # n x N x T => n x N x T
-        self.LayerN_S = select_norm('gln', N)
+        self.LayerN_S = select_norm('cln', N)
         # Conv 1 x 1 of Separation
         # n x N x T => n x B x T
         self.BottleN_S = nn.Conv1d(N, B, 1)
